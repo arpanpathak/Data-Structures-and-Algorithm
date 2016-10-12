@@ -1,6 +1,5 @@
 /** Coin Change Problem implemented by Arpan Pathak using greedy approach
  * Greedy approach will not work for all denominations but it will work for indian rupee **/
-package greedy;
 public class CoinChangeINR {
 	static int min(int arr[],int val)
 	{

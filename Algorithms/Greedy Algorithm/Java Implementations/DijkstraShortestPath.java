@@ -1,6 +1,4 @@
 /** Dijkstra's algorithm implemented by Arpan Pathak **/
-package greedy;
-
 import java.util.Arrays;
 
 class Graph

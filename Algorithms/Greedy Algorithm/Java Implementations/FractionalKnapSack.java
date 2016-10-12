@@ -2,7 +2,6 @@
  * Implemented By Arpan Pathak
  * Greedy Approach
  * **/
-package greedy;
 import java.util.*;
 class Item implements Comparable<Item>
 {
