@@ -1,3 +1,4 @@
+/** Longest Common substring using dynamic programming, implemented by Arpan Pathak, Time Complexity O(MxN) **/
 #include <bits/stdc++.h>
 #define ninf INT_MIN
 using namespace std;
