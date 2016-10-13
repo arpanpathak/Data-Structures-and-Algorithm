@@ -30,14 +30,14 @@ class GraphAdjacencyList<T,V>
 		queue.add(start_vertex);
 		while(!queue.isEmpty())
 		{
-			T explore=queue.poll();
+			T explore=queue.removeFirst();
 			System.out.print(explore+",");
 			if(!G.containsKey(explore)) continue; // to avoid NullPointerException
 			for(Edge<T,V> iterator: G.get(explore))
 			{
 				if(!visited.get(iterator.v)) {
 					visited.put(iterator.v,  true); 
-					queue.add(0,iterator.v);
+					queue.add(iterator.v);
 				}
 			}
 		}
