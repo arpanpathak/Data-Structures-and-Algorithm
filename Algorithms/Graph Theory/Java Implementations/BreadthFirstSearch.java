@@ -27,7 +27,7 @@ class GraphAdjacencyList<T,V>
 		LinkedList<T> queue=new LinkedList<>();
 		Map<T,Boolean> visited=new HashMap<>();
 		for(T i: vertices) visited.put(i, (i==start_vertex?true:false));
-		queue.add(start_vertex); int i=0;
+		queue.add(start_vertex);
 		while(!queue.isEmpty())
 		{
 			T explore=queue.poll();
