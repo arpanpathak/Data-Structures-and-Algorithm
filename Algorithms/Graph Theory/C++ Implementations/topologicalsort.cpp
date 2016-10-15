@@ -59,6 +59,6 @@ int main()
     G.addEdge("E","C",10);
     G.addEdge("E","D",10);
     // start with a vertex which has a in degree of zero
-    for(string x: G.topologically_sorted_order("X"))
+    for(string x: G.topologically_sorted_order("A"))
         cout<<x<<",";
 }
