@@ -1,4 +1,4 @@
-/** Heap Sort, implemented by Arpan Pathak,... Time Complexity O(N logN)
+/** Heap Sort, implemented by Arpan Pathak,... Time Complexity O(N logN) **/
 import java.io.*;
 public class HeapSort {
 	static void swap(int[] H,int i,int j) {int temp=H[i]; H[i]=H[j]; H[j]=temp;  } 
