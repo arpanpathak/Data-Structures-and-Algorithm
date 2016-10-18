@@ -1,5 +1,6 @@
 /** Merge Sort... Time Complexity for all cases O(N log N),. @author: Arpan Pathak **/
 #include <iostream>
+#include <vector>
 using namespace std;
 void merge(int *A,int *L,int leftCount,int *R,int rightCount )
 {
@@ -22,6 +23,7 @@ void merge_sort(int *arr,int n)
 int main()
 {
     int A[]={10,9,8,7,6,5,4,3,2,1};
+    for(int i: v) cout<<i<<endl;
     merge_sort(A,sizeof(A)/sizeof(A[0]));
     for(int i: A) cout<<i<<" ";
 }
