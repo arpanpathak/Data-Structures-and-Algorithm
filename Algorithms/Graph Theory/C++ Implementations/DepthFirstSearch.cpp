@@ -21,16 +21,16 @@ class Graph
         void addEdge(K u,K v,V w) { G[u].push_front(Edge<K,V>(v,w));  Vertices.insert(u); Vertices.insert(v); }
         void DFS(K start_vertex)
         {
-            queue<K> que; map<K,bool> visited;
+            map<K,bool> visited;
             for(auto i: Vertices)       visited[i]=(i==start_vertex?true:false);
-            DFS(start_vertex,que,visited);
+            DFS(start_vertex,visited);
         }
-        void DFS(K start_vertex,queue<K> &que,map<K,bool> &visited)
+        void DFS(K start_vertex,map<K,bool> &visited)
         {
             cout<<start_vertex<<",";
             visited[start_vertex]=true;
             for(auto i: G[start_vertex])
-                if(!visited[i.vertex]) DFS(i.vertex,que,visited);
+                if(!visited[i.vertex]) DFS(i.vertex,visited);
         }
 };
 int main()
