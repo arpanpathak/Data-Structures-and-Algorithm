@@ -21,11 +21,11 @@ int main()
     for(int j=1;j<n;j++){
         current_min=inf;
         for(int i=0;i<n;i++)
-            if(!done[i] && D[i]>D[previous]+G[previous][i])
+            if(!done[i] &&  G[previous][i]!=inf && D[i]>D[previous]+G[previous][i])
             {
                 D[i]=D[previous]+G[previous][i];
                 parent[i]=previous;
-                if(D[i]<current_min){ current_min=D[i]; index=i; }
+                if(D[i]< current_min){ current_min=D[i]; index=i; }
             }
             previous=index; done[previous]=true;
     }
