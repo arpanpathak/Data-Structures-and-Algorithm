@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "quicksort.h"
-#define makeSet(a) parent[a]=a // makeset is used to make a disjoint set
-int parent[100]={0}; 
+#define makeSet(a) parent[a]=a
+int parent[100]={0};
 int find(int a){  return (parent[a]==a? a: find(parent[a]) ); }
 int uniion(int a,int b)
 {
@@ -16,12 +16,12 @@ int main(){
     printf("Enter connections (u,v,weight) :\n");
     for(int i=0;i<e;i++){  scanf("%d%d%d",&u,&v,&w);    makeSet(u);   makeSet(v);
                            edges[i].u=u;                edges[i].v=v; edges[i].weight=w;  }
-    for(int i=0; i<e && mst_edges<n; i++){ // edges in MST is n-1 where n is number of vertex of the graph
-          if(uniion(edges[i].u,edges[i].v)){
+    quick_sort(edges,0,e-1);
+    for(int i=0; i<e && mst_edges<n; i++){
+        if(uniion(edges[i].u,edges[i].v)){
             min_cost+=edges[i].weight;
             printf("Edge (%d,%d) is in MST, weight=%d\n",edges[i].u,edges[i].v,edges[i].weight);
-         }
+        }
     }
     printf("Cost of Minimal Spanning Tree=%d",min_cost);
-    return 0;
 }
