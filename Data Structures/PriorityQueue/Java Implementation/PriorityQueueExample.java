@@ -19,7 +19,6 @@
  *  capacity() 	        : This method will return current capacity of the queue.
  *  resize(expand_size) : This method will expand the current capacity of the queue.
  *  @author: Arpan Pathak **/
-package accounting_software;
 import java.lang.reflect.Array;
 import java.util.Map;
 import java.util.HashMap;
