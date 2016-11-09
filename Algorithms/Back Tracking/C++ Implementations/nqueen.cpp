@@ -1,8 +1,8 @@
 /** N Queen Problem using backtracking, implemented by Arpan Pathak,
-** Worst Case Time Complexity O(N^3) **/
+** Worst Case Time Complexity O(N^N) **/
 #include <bits/stdc++.h>
 using namespace std;
-int placed[25];
+int placed[100];
 void print(int n)
 {
     for(int i=0;i<n;i++)
@@ -42,7 +42,6 @@ void nqueen(int initial,int k,int n)
             break;
         }
     }
-
     if(flag) nqueen(0,k+1,n);
     else
         nqueen(placed[k-1]+1,k-1,n);
@@ -50,7 +49,7 @@ void nqueen(int initial,int k,int n)
 
 int main()
 {
-    for(int i=0;i<25;i++) placed[i]=-1;
+    for(int i=0;i<100;i++) placed[i]=-1;
     int n;
     cout<<"Enter the value of n=";
     cin>>n;
