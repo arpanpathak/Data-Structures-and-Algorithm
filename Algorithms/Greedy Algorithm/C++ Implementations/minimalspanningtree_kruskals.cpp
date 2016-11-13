@@ -1,4 +1,4 @@
-/** Kruskal's Minimal Spanning Tree Algorithm, time complexity O(NlogN+E)
+/** Kruskal's Minimal Spanning Tree Algorithm, time complexity O(ElogE)
 **  @author: Arpan Pathak **/
 #include <bits/stdc++.h>
 using namespace std;
