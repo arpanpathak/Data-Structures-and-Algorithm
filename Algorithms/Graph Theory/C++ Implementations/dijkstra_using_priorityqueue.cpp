@@ -1,4 +1,4 @@
-/** Dijkstra's using priority queue... Time Complexity O(VlogV+E)
+/** Dijkstra's using priority queue... Time Complexity O(ElogV)
  ** @author: Arpan Pathak... **/
 #include <bits/stdc++.h>
 #define inf INT_MAX
@@ -11,10 +11,12 @@ struct Comparator{ bool operator()(Edge &e1,Edge &e2) { return e1.w>e2.w;  } };
 class Graph
 {
     map<int,list< Edge> > G;
+    map<int,int> parent;
     int n; // no of vertices
     public:
         Graph(int n): n(n+1) { }
-        void addEdge(int u,int v,int w) { G[u].push_front(Edge(v,w)); G[v].push_front(Edge(u,w)); }
+        void addEdge(int u,int v,int w) { G[u].push_front(Edge(v,w)); //G[v].push_front(Edge(u,w));
+         }
         void dijkstra(vector<int> &d,int source){
             priority_queue<Edge,vector<Edge>,Comparator> pque;
             d[source]=0;
@@ -27,8 +29,12 @@ class Graph
                     {
                         d[i.v]=d[current.v]+i.w;
                         pque.push(Edge(i.v,d[i.v]));
+                        parent[i.v]=current.v;
                     }
             }
+            cout<<"Vertex=>Parent"<<endl;
+            for(auto i: parent)
+                cout<<i.first<<"=>"<<i.second<<endl;
         }
 };
 int main(){
