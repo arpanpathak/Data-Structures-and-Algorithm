@@ -29,8 +29,9 @@ void kmp(vector<int> &spa,string str,string pattern){
     if(!c) cout<<"Not Found"<<endl;
 }
 int main(){
-    string str="abcddddabcfffddabcafafkfknabc",pattern="abcfx";
-    vector<int> spa(str.length());
+    string str="abcddddabcfffddabcafafkfknabc",pattern="abc";
+    vector<int> spa(pattern.length());
+    suffix_prefix(spa,pattern);
     kmp(spa,str,pattern);
     return 0;
 }
