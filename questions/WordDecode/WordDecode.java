@@ -6,13 +6,13 @@ public class WordDecode {
 	 *	 message and dec will be the decrypted message.Lets take initialize start=0,i=0.
 	 *   We would search from 0th index till the last and check whether the 
 	 *   substring is equals to any
-	 *	 word of the dictionary or any word of the dictionary is a substring of the string
-	 *	 "match" or not.So there will be two cases, 
+	 *   word of the dictionary or any word of the dictionary is a substring of the string
+	 *   "match" or not.So there will be two cases, 
 	 *
 	 *   Case 1:( When Length of "match" <=maximum length of a word in dictionary )
 	 *   -------
 	 *   In this case, we need to search whether the substring starting from "start" to i
-	 *	 is equals to any word of the dictionary.If it's then append this substring to 
+	 *   is equals to any word of the dictionary.If it's then append this substring to 
 	 *    
 	 */
 
