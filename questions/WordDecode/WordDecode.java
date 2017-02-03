@@ -4,6 +4,7 @@ public class WordDecode {
 	/*** The idea is very simple, lets say dictionary[ ] is an array of
 	 *   Strings which contains all the words. Now let enc is the encrypted
 	 *   message and dec will be the decrypted message.Lets take initialize start=0,i=0.
+	 *   Let String match is used to hold the current substring of "enc" starting from "start" to "i" 
 	 *   We would search from 0th index till the last and check whether the 
 	 *   substring is equals to any
 	 *   word of the dictionary or any word of the dictionary is a substring of the string
@@ -12,8 +13,11 @@ public class WordDecode {
 	 *   Case 1:( When Length of "match" <=maximum length of a word in dictionary )
 	 *   -------
 	 *   In this case, we need to search whether the substring starting from "start" to i
-	 *   is equals to any word of the dictionary.If it's then append this substring to 
-	 *    
+	 *   is equals to any word of the dictionary.If it's then append this substring to "dec"
+	 *   Case 2: ( When Length of "match" >maximum length of word in dictionary )
+	 *   -------
+	 *   In this case, we need to find if is there any word in the dictionary which is 
+	 *   substring of the String "match"
 	 */
 
 	public static void main(String[] args) throws Exception{
@@ -37,9 +41,7 @@ public class WordDecode {
 			// get the substring starting from index "start" to "i"
 			String match=enc.substring(start, i+1);
 			
-			/*** if the length of current substring is<= 
-			 * 
-			 */
+			/*** if the length of current substring is<=max_length ***/
 			if(i-start<max_length){
 				for(String s:dictionary)
 					if(match.equals(s)){
@@ -48,7 +50,7 @@ public class WordDecode {
 						break;
 					}
 			}
-			/** Now in following case, the length of the substring is greater than the max length of a word
+			/** Now in the following case, the length of the substring is greater than the max length of a word
 			 * in the dictionary.So we need to search if any word of dictionary is contained 
 			 * in this substring ( i.e if any word of dictionary is substring of the String "match" )
 			 */
