@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 public class WordDecode {
 	/*** The idea is very simple, lets say dictionary[ ] is an array of
-	 *	 Strings which contains all the words. Now let enc is the encrypted
-	 *	 message and dec will be the decrypted message.Lets take initialize start=0,i=0.
+	 *   Strings which contains all the words. Now let enc is the encrypted
+	 *   message and dec will be the decrypted message.Lets take initialize start=0,i=0.
 	 *   We would search from 0th index till the last and check whether the 
 	 *   substring is equals to any
 	 *   word of the dictionary or any word of the dictionary is a substring of the string
@@ -54,7 +54,7 @@ public class WordDecode {
 			 */
 			else{ 
 				for(String s: dictionary){
-					int idx=match.indexOf(s);
+					int idx=match.indexOf(s);//If no substring not found then the indeOf would return -1
 					if(idx!=-1){
 						dec+=s+" ";
 						start+=idx+s.length();
