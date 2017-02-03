@@ -32,7 +32,6 @@ public class WordDecode {
 		for(String s: dictionary)
 			max_length=Math.max(max_length,s.length());
 		
-		System.out.println("Enter encoded string=");
 		String enc=br.readLine();
 		int start=0; // start is the starting index from which the substrings will be matched.
 					// initially start is pointing to the beginning of the string.
