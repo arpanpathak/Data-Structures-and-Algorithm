@@ -17,7 +17,7 @@ template<class T> class BIT
             for(int i=0;i<arr.size();i++)
                 update(i,arr[i]);
         }
-        void update(int idx,int val)
+        void update(int idx,T val)
         {
             for( ++idx ; idx<=arr.size();tree[idx]+=val,idx+=idx&(-idx) );
         }
@@ -31,11 +31,17 @@ template<class T> class BIT
         {
             return prefixSum(r)-prefixSum(l-1);
         }
+        void rangeUpdate(int l,int r,T val)
+        {
+            update(l,val);
+            update(r+1,-val);
+        }
 };
 int main()
 {
     vector<int> ar={1,2,3,-4,5,6,7,1};
     BIT<int> bt(ar);
+    bt.rangeUpdate(1,2,5);
     cout<<bt.prefixSum(4)<<endl;
     cout<<bt.rangeSum(3,6);
     return 0;

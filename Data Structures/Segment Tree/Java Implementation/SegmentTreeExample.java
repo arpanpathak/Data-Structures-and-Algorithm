@@ -20,10 +20,6 @@ class SegmentTree
 	SegmentTree(long arr[])
 	{
 		
-		/* Calculating next power of two... if size of arr is power of 2
-		 * then size of segment tree will be 2*size of arr-1, else
-		 * the size will be 2*next power of two -1 
-		 */
 		int x = (int) (Math.ceil(Math.log(arr.length) / Math.log(2)));
         size = 2 * (int) Math.pow(2, x) - 1; // 2*size will be next power of two-1 
       
@@ -37,11 +33,25 @@ class SegmentTree
 	
 	
 	/** Utility Function to test rangeMinQuery **/
-	public long rangeMinQuery(int qlow,int qhigh)
+	public long rangeMin(int qlow,int qhigh)
 	{
 		return rangeMinQuery(qlow,qhigh,0,arr.length-1,0);
 	}
 	
+	public long rangeMax(int qlow,int qhigh)
+	{
+		return rangeMax(qlow,qhigh,0,arr.length-1,0);
+	}
+	public long rangeMax(int qlow,int qhigh,int low,int high,int pos)
+	{
+		if(qlow<=low && qhigh>=high) // total overlap
+			return tree[pos].max;
+		if( qlow>high || qhigh<low) // no overlap
+			return ninf;
+		int mid=(high+low)/2;
+		return Math.max(rangeMax ( qlow,qhigh,low,mid,2*pos+1 ),
+					    rangeMax ( qlow,qhigh, mid+1, high, 2*pos+2) );
+	}
 	// method for range minimum query
 	public long rangeMinQuery(int qlow,int qhigh,int low,int high,int pos)
 	{
@@ -53,7 +63,20 @@ class SegmentTree
 		return Math.min(rangeMinQuery ( qlow,qhigh,low,mid,2*pos+1 ),
 					    rangeMinQuery ( qlow,qhigh, mid+1, high, 2*pos+2) );
 	}
-	
+	public long rangeSum(int qlow,int qhigh)
+	{
+		return rangeSum(qlow,qhigh,0,arr.length-1,0);
+	}
+	public long rangeSum(int qlow,int qhigh,int low,int high,int pos)
+	{
+		if(qlow<=low && qhigh>=high) // total overlap
+			return tree[pos].sum;
+		if( qlow>high || qhigh<low) // no overlap
+			return 0;
+		int mid=(high+low)/2;
+		return rangeSum ( qlow,qhigh,low,mid,2*pos+1 )+
+					    rangeSum ( qlow,qhigh, mid+1, high, 2*pos+2);
+	}
 	private void constructTree(int low,int high,int pos)
 	{
 		if(low==high){
@@ -68,14 +91,33 @@ class SegmentTree
 		tree[pos].min=Math.min(tree[2*pos+1].min,tree[2*pos+2].min);
 		tree[pos].sum=tree[2*pos+1].sum + tree[2*pos+2].sum;
 	}
-	
-	@Override
-	public String toString()
+	void update(int node, int start, int end, int idx, long val)
 	{
-		String result="";
-		for(MiniMax i: tree)
-			result+="("+i.min+","+i.max+",sum="+i.sum+")";
-		return result;
+	    if(start == end)
+	    {
+	        // Leaf node
+	        arr[idx] += val;
+	        tree[node].sum += val;
+	        tree[node].min=tree[node].max=tree[node].sum;
+	    }
+	    else
+	    {
+	        int mid = (start + end) / 2;
+	        if(start <= idx && idx <= mid)
+	        {
+	            // If idx is in the left child, recurse on the left child
+	            update(2*node+1, start, mid, idx, val);
+	        }
+	        else
+	        {
+	            // if idx is in the right child, recurse on the right child
+	            update(2*node+2, mid+1, end, idx, val);
+	        }
+	        // Internal node will have the sum of both of its children
+	        tree[node].sum = tree[2*node+1].sum + tree[2*node+2].sum;
+	        tree[node].min = Math.min(tree[2*node+1].min , tree[2*node+2].min);
+	        tree[node].max= Math.max(tree[2*node+1].max , tree[2*node+2].max);
+	    }
 	}
 }
 public class SegmentTreeExample {
@@ -84,7 +126,7 @@ public class SegmentTreeExample {
 		long a[]={-1,0,3,6};
 		SegmentTree st=new SegmentTree(a);
 		System.out.println(st);
-		System.out.println(st.rangeMinQuery(0, 3));
+		System.out.println(st.rangeMin(0, 3));
 	}
 }
 
