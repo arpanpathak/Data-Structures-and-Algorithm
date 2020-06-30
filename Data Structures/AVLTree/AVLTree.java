@@ -64,11 +64,11 @@ public class AVLTree {
 		return height(t.left) - height(t.right);
 	}
 	
-	// 		   x							             y
-	//      /   \							          / \
-	//      T1   y     Left Rotation	 x	T3
-	// 			/ \    - - - - - - - >	  / \
-	// 		   T2  T3					         T1  T2
+	// 		   x							  y
+	//       /   \							 / \
+	//      T1   y     Left Rotation		x	T3
+	// 			/ \    - - - - - - - >	   / \
+	// 		   T2  T3					  T1  T2
 	private Node leftRotate(Node x) {
 		
 		Node y = x.right;
@@ -80,11 +80,11 @@ public class AVLTree {
 	    return y;
 	}
 	
-	//     y                              x
-	//    / \     Right Rotation        /  \
-	//   x   T3   - - - - - - - >     T1    y 
-	//  / \       				            / \
-	// T1  T2     				           T2  T3
+	//    y                               x
+	//   / \     Right Rotation          /  \
+	//  x   T3   - - - - - - - >        T1   y 
+	// / \       				            / \
+	//T1  T2     				           T2  T3
 	private Node rightRotate(Node y) {
 		
 		Node x = y.left;
