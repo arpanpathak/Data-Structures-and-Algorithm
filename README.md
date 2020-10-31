@@ -32,3 +32,12 @@ This Repository contains the following algorithms implemented in C, C++, Java, P
    - Topological Sort
    - Bellman Ford Shortest Path
    - Travelling Salesman Brute Force
+  - #### Greefy
+    - Fractional Knapsack
+    - Job Sequence with deadline
+    - Activity Selection
+  - #### Combinatorics
+    - Print Superset
+    - Narayana Pandita's Next Permutation
+ - #### Pattern Matching
+    - KMP
