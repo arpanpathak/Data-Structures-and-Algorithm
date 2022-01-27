@@ -23,6 +23,7 @@ class Graph{
 	}
 	void addEdge(int u,int v,int w){
 		G[u].add(0,new Edge(v,w)); 
+		G[v].add(0,new Edge(u,w)); //in case of weighted undirected graph
 	}
 	@Override
 	public String toString(){
